@@ -27,6 +27,10 @@ const GlobalStyles = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
   }
+
+  .cl-internal-b3fm6y {
+    display: none;
+  }
 `;
 
 export default GlobalStyleProvider;
