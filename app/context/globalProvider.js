@@ -2,6 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 import React, { createContext, useContext, useState } from "react";
+import toast from "react-hot-toast";
 import themes from "./themes";
 
 export const GlobalContext = createContext();
@@ -35,12 +36,52 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const deleteTask = async (id) => {
+    try {
+      const res = await axios.delete(`/api/tasks/${id}`);
+      toast.success("Task deleted");
+
+      allTasks();
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  const updateTask = async (task) => {
+    try {
+      const res = await axios.put(`/api/tasks`, task);
+
+      toast.success("Task updated");
+
+      allTasks();
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  const completedTasks = tasks.filter((task) => task.isCompleted === true);
+  const importantTasks = tasks.filter((task) => task.isImportant === true);
+  const incompleteTasks = tasks.filter((task) => task.isCompleted === false);
+
   React.useEffect(() => {
     if (user) allTasks();
   }, [user]);
 
   return (
-    <GlobalContext.Provider value={{ theme, tasks }}>
+    <GlobalContext.Provider
+      value={{
+        theme,
+        tasks,
+        deleteTask,
+        isLoading,
+        completedTasks,
+        importantTasks,
+        incompleteTasks,
+        updateTask,
+      }}
+    >
       <GlobalUpdateContext.Provider value={{}}>
         {children}
       </GlobalUpdateContext.Provider>
