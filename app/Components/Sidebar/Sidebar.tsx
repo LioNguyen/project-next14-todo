@@ -40,7 +40,7 @@ function Sidebar() {
           <Image width={70} height={70} src={imageUrl} alt="profile" />
         </div>
         <div className="user-btn absolute z-20 top-0 w-full h-full">
-          <UserButton />
+          <UserButton afterSignOutUrl="/sign-in" />
         </div>
         <h1 className="capitalize">
           {firstName} {lastName}

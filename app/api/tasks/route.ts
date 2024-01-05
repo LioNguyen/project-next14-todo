@@ -58,8 +58,6 @@ export async function GET(req: Request) {
       },
     });
 
-    console.log("🚀 @log ~ file: route.ts:61 ~ GET ~ tasks:", tasks);
-
     return NextResponse.json(tasks);
   } catch (error) {
     console.log("ERROR GETTING TASKS: ", error);

@@ -14,7 +14,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Lio's Todo",
+  title: "Lio | Todo",
   description: "Manage my tasks list",
 };
 
