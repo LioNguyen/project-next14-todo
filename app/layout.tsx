@@ -16,6 +16,9 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "Lio | Todo",
   description: "Manage my tasks list",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
